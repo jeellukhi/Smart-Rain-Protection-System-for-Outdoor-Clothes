@@ -1,0 +1,51 @@
+#include <Servo.h>
+
+// Create Servo objects
+Servo servoLeft;
+Servo servoRight;
+
+// Pin Definitions
+const int rainSensorPin = A0;   // Potentiometer (Rain Sensor) connected to A0
+const int servoLeftPin = 9;     // Servo motor connected to Pin 9
+const int servoRightPin = 10;   // Servo motor connected to Pin 10
+
+// Rain Sensor Threshold (Adjust based on your needs)
+const int rainThreshold = 300;  // Threshold for rain detection
+
+void setup() {
+  // Start Serial Communication (Optional for debugging)
+  Serial.begin(9600);
+
+  // Attach servos to corresponding pins
+  servoLeft.attach(servoLeftPin);
+  servoRight.attach(servoRightPin);
+
+  // Initial position of the servos (Rod outside for drying)
+  servoLeft.write(0);  // Fully extended position
+  servoRight.write(0); // Fully extended position
+}
+
+void loop() {
+  // Read the rain sensor value (Using potentiometer in place of the rain sensor)
+  int rainValue = analogRead(rainSensorPin);
+
+  // Optional: Print the sensor value to the serial monitor for debugging
+  Serial.print("Rain Sensor Value: ");
+  Serial.println(rainValue);
+
+  // Check if rain is detected (Simulated by the potentiometer)
+  if (rainValue < rainThreshold) {
+    // If rain detected, pull the rod inside
+    Serial.println("Rain detected! Pulling clothes inside.");
+    servoLeft.write(90);  // Move servos to bring the rod inside
+    servoRight.write(90);
+  } else {
+    // No rain, move the rod outside
+    Serial.println("No rain. Keeping clothes outside.");
+    servoLeft.write(0);  // Return servos to extend the rod outside
+    servoRight.write(0);
+  }
+
+  // Wait a bit before checking again
+  delay(2000);
+}
