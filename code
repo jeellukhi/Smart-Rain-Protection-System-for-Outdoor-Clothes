@@ -12,18 +12,6 @@ const int servoRightPin = 10;   // Servo motor connected to Pin 10
 // Rain Sensor Threshold (Adjust based on your needs)
 const int rainThreshold = 300;  // Threshold for rain detection
 
-void setup() {
-  // Start Serial Communication (Optional for debugging)
-  Serial.begin(9600);
-
-  // Attach servos to corresponding pins
-  servoLeft.attach(servoLeftPin);
-  servoRight.attach(servoRightPin);
-
-  // Initial position of the servos (Rod outside for drying)
-  servoLeft.write(0);  // Fully extended position
-  servoRight.write(0); // Fully extended position
-}
 
 void loop() {
   // Read the rain sensor value (Using potentiometer in place of the rain sensor)
