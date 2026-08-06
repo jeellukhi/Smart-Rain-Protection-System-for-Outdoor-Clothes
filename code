@@ -49,3 +49,5 @@ void loop() {
   // Wait a bit before checking again
   delay(2000);
 }
+
+// Connect and run using cable
