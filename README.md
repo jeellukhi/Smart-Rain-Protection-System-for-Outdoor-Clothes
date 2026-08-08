@@ -32,7 +32,7 @@ Response Time Test: Measured time from rain detection to clothes retraction.
 
 Rain Detection: Sensor detected rain within a few seconds.
 Retraction/Extension: Motor operated smoothly; clothesline moved effectively.
-Response Time: Average response time was X seconds (insert your data if available).
+Response Time: Average response time was <1000 ms (insert your data if available).
 Reliability: System consistently performed well during multiple trials.
 
 
